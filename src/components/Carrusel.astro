@@ -1,0 +1,138 @@
+---
+const productos = [
+  {
+    id: 1,
+    nombre: "Nueces",
+    precio: 300,
+    ventaPor: "gr",
+  },
+  {
+    id: 2,
+    nombre: "Pistacho",
+    precio: 800,
+    ventaPor: "kg",
+  },
+  {
+    id: 3,
+    nombre: "Mix frutos secos",
+    precio: 500,
+    ventaPor: "gr",
+  },
+  {
+    id: 4,
+    nombre: "Frutas secas",
+    precio: 300,
+    ventaPor: "kg",
+  },
+  {
+    id: 5,
+    nombre: "Pasas de uva",
+    precio: 500,
+    ventaPor: "gr",
+  },
+];
+
+const masproductos = [...productos, ...productos];
+---
+
+<section class="pt-24">
+  <div class="text-center text-4xl mb-16 font-bold">
+    <h3 class="text-green-700 text-6xl font-semibold">Productos</h3>
+  </div>
+  <article class="overflow-hidden">
+    <div class="flex whitespace-nowrap animate-scroll">
+      {
+        masproductos.map((producto) => (
+          <div
+            id="carousel"
+            class="h-full w-[400px] m-2 flex-shrink-0 cursor-pointer"
+          >
+            <div class="rounded-3xl overflow-hidden mb-4 h-[250px] img-brillo">
+              <img
+                class="size-[100%] object-cover absolute top-0 left-0"
+                src={`/img/carrusel/producto-${producto.id}.webp`}
+                alt={`${producto.id}`}
+              />
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="gap-4 border rounded-lg green-gray-400 bg-slate-400/30 px-4">
+                <div class="flex items-center gap-2 justify-center">
+                  <h5 class="text-md text-center text-green-700 leading-7 whitespace-normal">
+                    <strong> {producto.nombre}</strong>
+                  </h5>
+                </div>
+                <span class="text-green-700 text-md">
+                  venta por <strong>{producto.ventaPor}</strong>
+                </span>
+                <div class="flex items-center gap-2">
+                  <h5 class="text-md text-green-700 leading-7 whitespace-normal">
+                    Precio:
+                    <strong>{producto.precio}$</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </article>
+</section>
+<style>
+  /* carrusel */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-400px * 5 - 0.5rem * 10));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+  /*  fin carrusel */
+  /* brillo'anim */
+  .img-brillo {
+    position: relative;
+  }
+
+  .img-brillo:after {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+       rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: skewX(-20deg);
+  }
+  .img-brillo img {
+    transition: transform 0.5s;
+  }
+  .img-brillo:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  .img-brillo:hover:after {
+    animation: imgBrillo 1s;
+  }
+
+  @keyframes imgBrillo {
+    100% {
+      left: 125%;
+    }
+  }
+</style>

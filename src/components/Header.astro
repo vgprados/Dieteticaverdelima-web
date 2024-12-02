@@ -1,0 +1,40 @@
+---
+
+---
+<header id= "nav-bar"
+class="fixed flex w-full justify-between px-12 h-28 items-center bg-green-700">
+    <div>
+        <a href="/">
+            <img src="../../public/logo.png" alt="logo" class="w-auto h-[110px]">
+        </a>
+    </div>
+    <nav class="flex flex-wrap gap-10 bg-green-700 justify-center text-white">
+        <a href="/productos" class="text-white">Productos</a>
+        <a href="/recetas" class="text-white">Recetas</a>
+        <a href="/nosotros" class="text-white">Sobre nosotros</a>
+        <a href="/contacto" class="text-white">Contacto</a>     
+        
+
+        </a>
+    </nav>
+
+</header>
+<style>
+#nav-bar
+{
+    z-index: 1;
+    animation:blur linear both;
+    animation-timeline: scroll();
+    animation-range: 0 500px;
+}
+@keyframes blur
+{
+    to{
+        color:white;
+        box-shadow: 0px 5px 50px -5px hsla(0,0%,100%,0.1),
+        0px 0px 0px 1px hsla(0,0%,100%,0.1);
+        background: rgba(0, 0, 0, 0.58);
+        backdrop-filter: blur(10px);
+    }
+}
+</style>

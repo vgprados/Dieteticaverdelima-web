@@ -1,0 +1,99 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+
+
+const teamMembers = [
+  {
+    name: "Juan Pérez",
+    role: "Administrativo",
+    bio: "Juan nos acompaña hace mas de 7 años en la industria de alimentos saludables.",
+        image: "../../public/juan.png"
+  },
+  {
+    name: "Ana López",
+    role: "Dueña",
+    bio: "Ana es experta en alimentos naturales.",
+    image: "../../public/ana.png"
+
+  },
+  {
+    name: "Paulina Aguirre",
+    role: "Nutricionista",
+    bio: "Paulina tiene más de 10 años de experiencia en la industria alimenticia.",
+    image: "../../public/Paulina.png"
+  },
+  {
+    name: "Cristina Ledesma",
+    role: "Vendedora",
+    bio: "Cristi nos acompaña en esta hermosa labor desde hace 5 años",
+    image: "../../public/cristina.png"
+  },
+  {
+    name: "Andres Tomeira",
+    role: "Vendedor",
+    bio: "Andres nos acompaña hace mas de diez años asesorando y ayudando al cliente",
+    image: "../../public/Andres.png"
+  },
+  {
+    name: "Elias Ceballos",
+    role: "Vendedor",
+    bio: "Andres nos acompaña hace mas de cinco años asesorando y ayudando al cliente",
+    image: "../../public/elias.png"
+  }
+];
+---
+
+<Layout title="Verde Lima" description="Dietetica">
+  <div class=" flex text-center font-bold">
+      <h3 class="text-6xl font-semibold">
+       contacto
+      </h3>
+    </div>
+
+    <section class="about-us">
+      <h1>Conoce al equipo</h1>
+      <p class="flex text-center font-bold text-green-700 text-3xl">Somos un equipo comprometido con la excelencia y la innovación en alimentos naturales.</p>
+      <div class="team-grid">
+        {teamMembers.map((member) => (
+          <div class="team-member">
+            <img src={member.image} alt={`Imagen de ${member.name}`} />
+            <h2>{member.name}</h2>
+            <h3>{member.role}</h3>
+            <p>{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+<style>
+  .about-us {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    }
+
+
+  .team-member {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+</style>
+
+</html>
+</Layout>
